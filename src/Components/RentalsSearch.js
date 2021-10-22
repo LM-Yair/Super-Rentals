@@ -1,9 +1,11 @@
 import React from 'react';
 
-const RentalsSearch = ({ rentals, setRentals }) => {
+const RentalsSearch = ({ setRentals, db }) => {
   const searchRentals = e => {
-    const coincidence = new  RegExp( e.target.value, 'gmi' );
-    console.log( e.target.value, coincidence.test( 'Hola' ) );
+    if( !e.target.value ) return setRentals( db );
+    const userTyping = new  RegExp( `(${ e.target.value })`, 'gmi' );
+    const coincidence = db.filter( el => userTyping.test( el.placeName ) );
+    setRentals( coincidence );
   }
   return(
     <nav className='rentalSearch'>

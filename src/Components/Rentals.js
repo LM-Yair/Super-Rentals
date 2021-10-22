@@ -8,8 +8,8 @@ const Rentals = () => {
   return(
     <section>
       <RentalsSearch 
-      rentals={ rentals }
       setRentals={ setRentals }
+      db={ db }
       />
       <ol className='rentals__list'>
       { 
