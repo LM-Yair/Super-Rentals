@@ -9,7 +9,7 @@ import db from '../Helpers/helpDataBase';
 const Mapa = () => {
   const [ isOpenModal, openModal, closeModal ] = useModal( false );
   const { id } = useParams();
-  const Rental = db.find( el => el.id == id );
+  const Rental = db.find( el => el.id === parseInt( id ) );
   const { img, placeName, owner, locationName, numberOfBedrooms, placeType, mapSrc } = Rental;
   return(
     <section>
@@ -50,11 +50,12 @@ const Mapa = () => {
       </section>
       </Banner>
       {	mapSrc && <section className='map__container'>
-	  <iframe className='map' 
+	  <iframe 
+	  title='map'
+	  className='map' 
 	  src={ mapSrc } 
 	  width="600" 
 	  height="450" 
-	  allowfullscreen="" 
 	  loading="lazy"
 	  >
 	</iframe>
